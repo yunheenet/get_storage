@@ -13,9 +13,13 @@ class GetStorage {
     if (_sync.containsKey(container)) {
       return _sync[container]!;
     } else {
-      final instance = GetStorage._internal(container, path, initialData);
-      _sync[container] = instance;
-      return instance;
+      try {
+        final instance = GetStorage._internal(container, path, initialData);
+        _sync[container] = instance;
+        return instance;
+      } catch (e) {
+        throw e;
+      }
     }
   }
 
