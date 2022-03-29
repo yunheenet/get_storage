@@ -25,7 +25,11 @@ class GetStorage {
     _initialData = initialData;
 
     initStorage = Future<bool>(() async {
-      await _init();
+      try {
+        await _init();
+      } catch (e) {
+        throw e;
+      }
       return true;
     });
   }
